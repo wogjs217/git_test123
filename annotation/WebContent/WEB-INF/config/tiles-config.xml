@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	<definition name="mainTemplate" template="/WEB-INF/layout/layout01.jsp">
+		<put-attribute name="header" value="//WEB-INF/layout/top.jsp"></put-attribute>
+		<put-attribute name="left" value="/WEB-INF/layout/left.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/layout/content.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="subTemplate" template="/WEB-INF/layout2/layout02.jsp">
+		<put-attribute name="header" value="//WEB-INF/layout2/top.jsp"></put-attribute>
+		<put-attribute name="left" value="/WEB-INF/layout2/left.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/layout2/content.jsp"></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/layout2/footer.jsp"></put-attribute>
+	</definition>
+
+	<definition name="index" extends="mainTemplate">
+	</definition>
+	<definition name="test" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/test/result.jsp"></put-attribute>
+	</definition>
+
+	<definition name="insert" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/emp/memberInput.jsp"></put-attribute>
+	</definition>
+	
+	
+	<!--  -->
+	<definition name="search" extends="subTemplate">
+		<put-attribute name="content" value="/WEB-INF/emp/search.jsp"></put-attribute>
+	</definition>
+	<definition name="searchlist" extends="subTemplate">
+		<put-attribute name="content" value="/WEB-INF/emp/searchlist.jsp"></put-attribute>
+	</definition>
+	
+</tiles-definitions>
+
+
+<!-- name 속성에 정의하는 이름이 실제 컨트롤러 에서 forward 할 view의 이름 extends 속성은 어떤 탬플릿을 
+	확장해서 뷰를 만든것인지 등록(탬프릿의 리음을 정의- 미리 정의되어 있어야한다. -->

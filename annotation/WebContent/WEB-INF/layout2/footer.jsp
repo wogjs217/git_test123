@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>sfjskjflksdjflkjsjklsjlkfjslkjldjsklfjkslfjkldsj</h3>
+<h1>FOOTER</h1>
 </body>
 </html>

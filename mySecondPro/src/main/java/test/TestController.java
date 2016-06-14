@@ -12,7 +12,7 @@ public class TestController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg","스프링에서 넘오온 어토테인션 데이터");
 		mav.setViewName("test");
-		
+		System.out.println("fdfds");
 		return mav;
 	}
 }

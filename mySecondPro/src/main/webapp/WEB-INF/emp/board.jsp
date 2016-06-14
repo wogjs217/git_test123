@@ -12,6 +12,7 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
+<!--  -->
 <%
 	List<TB_BoardDTO> boardlist = (List<TB_BoardDTO>) request.getAttribute("boardlist");
 	int size = boardlist.size();

@@ -8,6 +8,7 @@
 
 </head>
 <%
+System.out.println();
 	String id = (String)request.getParameter("id");
 	String name = (String)request.getParameter("name");
 

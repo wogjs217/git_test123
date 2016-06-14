@@ -24,6 +24,8 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- JNDI 성정 -->
+	
 	<beans:bean id="con" class="org.springframework.jndi.JndiObjectFactoryBean">
 		<beans:property name="jndiName" value="jdbc/myspring"></beans:property>
 		<beans:property name="resourceRef" value="true"></beans:property>

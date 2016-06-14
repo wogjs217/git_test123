@@ -5,17 +5,17 @@
 
 <tiles-definitions>
 	<definition name="mainTemplate" template="/WEB-INF/layout/layout01.jsp">
-		<put-attribute name="header" value="//WEB-INF/layout/top.jsp"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/layout/top.jsp"></put-attribute>
 		<put-attribute name="left" value="/WEB-INF/layout/left.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/layout/content.jsp"></put-attribute>
 	</definition>
-	
-	<definition name="subTemplate" template="/WEB-INF/layout2/layout02.jsp">
-		<put-attribute name="header" value="//WEB-INF/layout2/top.jsp"></put-attribute>
-		<put-attribute name="left" value="/WEB-INF/layout2/left.jsp"></put-attribute>
-		<put-attribute name="content" value="/WEB-INF/layout2/content.jsp"></put-attribute>
-		<put-attribute name="footer" value="/WEB-INF/layout2/footer.jsp"></put-attribute>
-	</definition>
+
+	<!-- <definition name="subTemplate" template="/WEB-INF/layout2/layout02.jsp"> 
+		<put-attribute name="header" value="/WEB-INF/layout2/top.jsp"></put-attribute> 
+		<put-attribute name="left" value="/WEB-INF/layout2/left.jsp"></put-attribute> 
+		<put-attribute name="content" value="/WEB-INF/layout2/content.jsp"></put-attribute> 
+		<put-attribute name="footer" value="/WEB-INF/layout2/footer.jsp"></put-attribute> 
+		</definition> -->
 
 	<definition name="index" extends="mainTemplate">
 	</definition>
@@ -26,18 +26,23 @@
 	<definition name="insert" extends="mainTemplate">
 		<put-attribute name="content" value="/WEB-INF/emp/memberInput.jsp"></put-attribute>
 	</definition>
-	
-	
-	<!--  -->
-	<definition name="search" extends="subTemplate">
+
+	<definition name="search" extends="mainTemplate">
 		<put-attribute name="content" value="/WEB-INF/emp/search.jsp"></put-attribute>
 	</definition>
-	<definition name="searchlist" extends="subTemplate">
+	<definition name="searchlist" extends="mainTemplate">
 		<put-attribute name="content" value="/WEB-INF/emp/searchlist.jsp"></put-attribute>
 	</definition>
-	
+
 	<definition name="list" extends="mainTemplate">
 		<put-attribute name="content" value="/WEB-INF/emp/list.jsp"></put-attribute>
+	</definition>
+	<definition name="detail" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/emp/detail.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="board" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/emp/board.jsp"></put-attribute>
 	</definition>
 	
 </tiles-definitions>

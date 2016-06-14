@@ -15,7 +15,7 @@
 	<div class="main">
 		<h1>자바나라</h1>
 		<hr />
-		<img alt="" src="/mySecondPro/res/images/jang.jpg" width="500" height="600">
+		<img alt="" src="/mysecondPro/res/images/jang.jpg" width="500" height="600">
 	</div>
 </body>
 </html>

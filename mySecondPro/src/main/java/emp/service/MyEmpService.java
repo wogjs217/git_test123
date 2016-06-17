@@ -15,7 +15,7 @@ public interface MyEmpService {
 	//회원탈퇴
 	void delete(String id);
 	//로그인
-	MyEmpDTO login(String id,String pass);
+	MyEmpDTO login(MyEmpDTO userInfo);
 	//회원목록보기
 	List<MyEmpDTO> getMemberList();
 	//주소로 검색
@@ -23,6 +23,9 @@ public interface MyEmpService {
 	
 	MyEmpDTO read(String id);
 	List<TB_BoardDTO> getboardlist();
+	
+	void txInsert(MyEmpDTO user);
+	// 트랜잭션 처리 회원가입
 }
 
 

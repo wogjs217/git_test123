@@ -28,12 +28,12 @@
 				MyEmpDTO user = userlist.get(i);
 		%>
 		<tr>
-			<td><a href="detail.do?id=<%=user.getId()%>"><%=user.getId()%></a></td>
+			<td><a href="mybatisdetail.do?id=<%=user.getId()%>&action=DETAIL"><%=user.getId()%></a></td>
 			<td><%=user.getPass()%></td>
 			<td><%=user.getName()%></td>
 			<td><%=user.getAddr()%></td>
 			<td><%=user.getDeptno()%></td>
-			<td><a href="delete.do?id=<%=user.getId()%>">삭제</a></td>
+			<td><a href="mybatisdelete.do?id=<%=user.getId()%>">삭제</a></td>
 		</tr>
 		<%
 			}

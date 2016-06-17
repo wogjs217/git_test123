@@ -2,9 +2,12 @@
 <beans:beans xmlns="http://www.springframework.org/schema/mvc"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
@@ -26,15 +29,11 @@
 
 	<!-- *****************************JNDI 성정****************************************** -->
 
-<!-- 	<beans:bean id="con"
-		class="org.springframework.jndi.JndiObjectFactoryBean">
-		<beans:property name="jndiName" value="jdbc/myspring"></beans:property>
-		<beans:property name="resourceRef" value="true"></beans:property>
-	</beans:bean>
-
-	<beans:bean id="template" class="org.springframework.jdbc.core.JdbcTemplate">
-		<beans:constructor-arg ref="con"></beans:constructor-arg>
-	</beans:bean> -->
+	<!-- <beans:bean id="con" class="org.springframework.jndi.JndiObjectFactoryBean"> 
+		<beans:property name="jndiName" value="jdbc/myspring"></beans:property> <beans:property 
+		name="resourceRef" value="true"></beans:property> </beans:bean> <beans:bean 
+		id="template" class="org.springframework.jdbc.core.JdbcTemplate"> <beans:constructor-arg 
+		ref="con"></beans:constructor-arg> </beans:bean> -->
 
 	<context:component-scan base-package="kr.kitri.secondPro" />
 	<context:component-scan base-package="kr.kitri" />
@@ -73,6 +72,57 @@
 		<beans:property name="dataSource" ref="con"></beans:property>
 	</beans:bean>
 
+	<!-- <beans:property name="mapperLocations" value="classpath:mapper/*.xml" 
+		/> -->
+	<!--******************************Mybatis 작업 설정 **************************** -->
+	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<beans:property name="dataSource" ref="con" />
+		<beans:property name="configLocation"
+			value="/WEB-INF/config/mybatis_config.xml" />
+	</beans:bean>
+	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<beans:constructor-arg ref="sqlSessionFactory" />
+	</beans:bean>
 
 
+	<!-- ===========트랜잭션에 대한 처리================================================================================ -->
+	<!-- 1. spring내부에서 jdbc를 이용할때 트렌잭션 처리를 간편하게 작업할 수 있도록 지원되는 클래스를 등록 -->
+	<beans:bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<!-- db와 연결되어 있어야 트랜잭션 처리를 할 수 있고 커넥션에 있는 트랜잭션 관리 메소드를 이용 -->
+		<beans:property name="dataSource" ref="con"></beans:property>
+	</beans:bean>
+
+	<!-- 2. 트랜잭션에 대한 처리를 aop적용 1) Advice등록(xml에서 등록) 트랜잭션을 xml로 처리하는 방법 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<!-- 트랜잭션을 적용할 메소드에 대한 정보(insert로 끝나는 메소드를 호출할때 Exception이 발생하면 rollback시켜라) -->
+		<tx:attributes>
+			<tx:method name="*insert" rollback-for="Exception" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 2) aop적용 -->
+	<aop:config proxy-target-class="true">
+		<aop:pointcut expression="execution(public * emp.service.MyEmpServiceImpl.*(..))"
+			id="trans" />
+		<aop:advisor id="txadvisor" advice-ref="txAdvice"
+			pointcut-ref="trans" />
+	</aop:config>
+
+
+	<!-- 인터셉터 등록 -->
+
+	<!-- <interceptors>
+			 <beans:bean class= "etc.controller.TimeCheckInterceptor" />
+	</interceptors> -->
+	
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/mybatislist.do"/>
+			<mapping path="/mybatissearch.do"/>
+			<beans:bean class="emp.mybatis.controller.loginCheckInterceptor" />
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>

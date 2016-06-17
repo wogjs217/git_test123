@@ -13,9 +13,12 @@
 		<hr/>
 		<h3><a href="test.do">스프링 웹 MVC연동하기</a></h3>
 		<h3><a href="insert.do">회원가입</a></h3>
-		<h3><a href="list.do">회원목록보기</a></h3>
 		<h3><a href="search.do">회원검색(검색액션:/search.do)</a></h3>
 		<h3><a href="board.do">게시판</a></h3>
+		<h3><a href="mybatislist.do">전체 목록 확인(mybatis기반)</a></h3>
+		<h3><a href="mybatissearch.do">회원검색(mybatis기반)</a></h3>
+		<h3><a href="txinsert.do">회원가입(트랜잭션처리)</a></h3>
+		
 	</div>
 </body>
 </html>

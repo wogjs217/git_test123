@@ -19,7 +19,7 @@ public class UpdateController {
 	
 	@RequestMapping(value="/update.do",method=RequestMethod.GET)
 	public String showPage(HttpServletRequest req){
-		return "emp/update";
+		return "update";
 	}
 			
 	@RequestMapping(value="/update.do",method=RequestMethod.POST)

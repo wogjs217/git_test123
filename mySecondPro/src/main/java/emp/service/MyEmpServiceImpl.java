@@ -14,13 +14,13 @@ import emp.dto.MyEmpDTO;
 public class MyEmpServiceImpl implements MyEmpService {
 	
 	@Autowired
-	@Qualifier("empdao")
+	@Qualifier("empmybatis")
 	MyEmpDAO dao;
 	
 	@Override
 	public int count() {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.count();
 	}
 
 	@Override
@@ -42,9 +42,8 @@ public class MyEmpServiceImpl implements MyEmpService {
 	}
 
 	@Override
-	public MyEmpDTO login(String id, String pass) {
-		// TODO Auto-generated method stub
-		return null;
+	public MyEmpDTO login(MyEmpDTO userInfo) {
+		return dao.login(userInfo);
 	}
 
 	@Override
@@ -62,13 +61,19 @@ public class MyEmpServiceImpl implements MyEmpService {
 	@Override
 	public MyEmpDTO read(String id) {
 		// TODO Auto-generated method stub
-		
 		return dao.read(id);
 	}
 
 	@Override
 	public List<TB_BoardDTO> getboardlist() {
 		return dao.getboardlist();
+	}
+
+	@Override
+	public void txInsert(MyEmpDTO user) {
+		// TODO Auto-generated method stub
+		dao.insert(user);
+		dao.insert(null);
 	}
 
 }

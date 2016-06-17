@@ -1,4 +1,4 @@
-package emp.controller;
+package emp.mybatis.controller;
 
 import java.util.List;
 
@@ -15,12 +15,12 @@ import emp.dto.MyEmpDTO;
 import emp.service.MyEmpService;
 
 @Controller
-public class ListController{
+public class ListMybatisController{
 	
 	@Autowired
 	MyEmpService service;
 	
-	@RequestMapping(value="/list.do",method=RequestMethod.GET)
+	@RequestMapping(value="/mybatislist.do",method=RequestMethod.GET)
 	public ModelAndView handleRequestInternal(HttpServletRequest arg0,
 			HttpServletResponse arg1) throws Exception {
 		

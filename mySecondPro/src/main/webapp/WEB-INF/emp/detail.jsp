@@ -39,7 +39,7 @@
 			<tr>
 				<td colspan="2" align="center">
 					<input type="button" value="수정하기"
-					onclick="location.href='update.do?id=<%=user.getId()%>&name=<%=user.getName()%>'"/>
+					onclick="location.href='update.do?id=<%=user.getId()%>&name=<%=user.getName()%>&action=UPDATE'"/>
 					<input type="button" value="삭제하기"
 					onclick="location.href='delete.do?id=<%=user.getId()%>'"/>
 					<input type="button" value="목록보기"

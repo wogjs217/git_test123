@@ -15,7 +15,7 @@ System.out.println();
 %>
 <body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
 <form name="form1" method="post" 
-					action="update.do">
+					action="mybatisupdate.do">
 <table align="center" cellpadding="0" cellspacing="0" width="479">
     <tr>
         <td width="469" colspan="2" height="42">
@@ -32,7 +32,7 @@ System.out.println();
             <p><code><b>아이디</b></code></p>
         </td>
         <td width="359">
-            <p><code><input type="text" name="id" value="<%=id%>" size="30" readonly></code></p>
+           <%-- <input type="text" name="id" value="<%=id%>" size="30" readonly> --%><b><%=id%></b>
         </td>
     </tr>
    <tr>
@@ -49,7 +49,7 @@ System.out.println();
             <p><code><b>성명</b></code></p>
         </td>
         <td width="359">
-            <p><code><input type="text" name="name" value="<%=name%>" size="30" readonly></code></p>
+            <%-- <p><code><input type="text" name="name" value="<%=name%>" size="30" readonly></code></p> --%><b><%=name%></b>
         </td>
     </tr>
     <tr>
